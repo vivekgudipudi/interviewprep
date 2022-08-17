@@ -1,23 +1,59 @@
-import logo from './logo.svg';
-import './App.css';
+import { useReducer } from "react";
+import "./App.css";
+import { Card } from "./card";
 
 function App() {
+
+  const data = [
+    {
+        name: "A",
+        counter : 0
+    },
+    {
+        name: "B",
+        counter : 0
+    },
+    {
+        name: "C",
+        counter : 0
+    },
+    {
+        name: "D",
+        counter : 0
+    },
+    {
+        name: "E",
+        counter : 0
+    },
+    {
+        name: "F",
+        counter : 0
+    },
+    {
+        name: "G",
+        counter : 0
+    },
+]
+
+const sortingData = (data)=>{
+  data.sort(function(a,b){return b["counter"]-a["counter"]})
+}
+
+const sortedData = sortingData(data)
+
+console.log(sortedData)
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Hey Cricbuzz, can't wait to work with you</h1>
+
+      <div className="container">
+        <div className="wrapper">
+        {
+          data.map((card)=><Card data={card}/>)
+        }
+        </div>
+      </div>
     </div>
   );
 }
